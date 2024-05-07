@@ -1,6 +1,26 @@
 .App {
   text-align: center;
 }
+h2{
+  margin: 0;
+}
+#block{
+  width: 100vw;
+  height: 100vh;
+  background-color: #c0aca2;
+}
+#block, #info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#info{
+  width: 40vw;
+  height: 80vh;
+  background-color: #8c525e;
+  border-radius: 50%;
+}
 
 .App-logo {
   height: 40vmin;
