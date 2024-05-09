@@ -1,23 +1,10 @@
-.App {
+.App, #infobox {
   text-align: center;
 }
-
-#block{
-  width: 100vw;
-  height: 100vh;
-  background-color: #c0aca2;
-}
-#block, #info{
-  display: flex;
+#arrFoto{
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-#info{
-  width: 40vw;
-  height: 90vh;
-  background-color: #8c525e;
-  border-radius: 16%;
+  width: 10%;
+  height: 10%;
 }
 
 .App-logo {
