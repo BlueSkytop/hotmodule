@@ -1,30 +1,48 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
 
 import './App.css';
-import Character from "./components/character/Character";
+import Products from "./components/product/Products";
+import {IProduct} from "./components/product/IProduct";
 
-function App() {
-  return (
-   <>
-       <Character name={'Bart Simpson'}
-                  image={'https://seeklogo.com/images/B/bart-simpson-logo-A3BCF65934-seeklogo.com.png'}
-       />
-       <Character name={'Homer Simpson'}
-                  image={'https://static.miraheze.org/loathsomecharacterswiki/thumb/3/32/Mmm_pork_rinds.png/300px-Mmm_pork_rinds.png'}
-       />
-       <Character
-           name={'Marge Simpson'}
-           image={'https://icons.veryicon.com/png/Movie%20%26%20TV/Simpsons%204/Marge%20Simpson.png'}>
-               Marjorie Jacqueline "Marge" Simpson(Born March 19) is the homemaker and ' +
-               'matriarch of the Simpson family. She is also one of the five main characters in The Simpsons TV series. ' +
-               'She and her husband Homer have three children: Bart, Lisa, and Maggie. Marge is the moralistic force in ' +
-               'her family and often provides a raspy and grounding voice in the midst of her family\'s antics by trying ' +
-               'to maintain order in the Simpson household. Aside from her duties at home, Marge has flirted briefly with' +
-               'a number of careers ranging from a police officer to an anti-violence activist.
 
-       </Character>
-       </>
-  );
-}
+const App:FC=() => {
+    const [products, setProducts] = useState<IProduct[]>([]);
+    useEffect(() =>{
+        fetch('https://dummyjson.com/docs/products/')
+            .then(value => value.json())
+            .then(value => {setProducts(value);
+            });
 
+        return() => {
+            console.log('start products');
+        }
+    }, []);
+
+    return(
+        <>
+            {
+                products.map(({id, title, description, price, discountPercentage,
+                                  rating, stock, brand, category, thumbnail, images},
+                              index) =>
+                <Products
+                   key={index}
+                   id={id}
+                   title={title}
+                   description={description}
+                   price={price}
+                   discountPercentage={discountPercentage}
+                   rating={rating}
+                   stock={stock}
+                   brand={brand}
+                   category={category}
+                   thumbnail={thumbnail}
+                   images={images}
+                ></Products>
+                )
+            }
+        </>
+    );
+};
+
+export {App}
 export default App;
