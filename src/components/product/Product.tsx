@@ -26,7 +26,7 @@ const Product: FC<IProductTypeProps> = ({id, title, description, price, discount
                 <p>stock: {stock}</p> <p>brand: {brand}</p>  <p>category: {category}</p>
 
                     {
-                        images.map((images) =>  <img id={'arrFoto'} src={images} alt="лого товару"/>)
+                        images.map((images, index) =>  <img key={index} id={'arrFoto'} src={images} alt="лого товару"/>)
                     }
 
 
