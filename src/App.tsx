@@ -1,45 +1,41 @@
 import React, {FC, useEffect, useState} from 'react';
-
+import axios from "axios";
 import './App.css';
-import {IUser} from "./model/IUser";
-import UserComponent from "./components/user/UserComponent";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Users from "./components/user/Users";
+import Posts from './components/user/Posts';
+import UserDetail from './components/user/UserDetail';
 
 
-const App:FC = () => {
+interface IUser {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+}
 
+const App: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(value => value.json())
-            .then(value => {
-                setUsers(value);
-            });
-
-
-    return () => {
-    console.log('start new happy day');
-        }
+        axios.get('https://dummyjson.com/users')
+            .then((response: { data: { users: IUser[] } }) => {
+                setUsers(response.data.users);
+            })
+            .catch((error: any) => console.error('Error fetching users:', error));
     }, []);
 
     return (
-        <>
-            {
-                users.map(({ name, id, email, username}, index) =>
-                    <UserComponent
-                        key={index}
-                        id={id}
-                        name={name}
-                        username={username}
-                        email={email}
-                    >kkhyjkljyukftfjythkyug</UserComponent>
-                )
-            }
-        </>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Users users={users} />} />
+                <Route path="/posts/:userId" element={<Posts />} />
+                <Route path="/user/:userId" element={<UserDetail />} />
+            </Routes>
+        </Router>
     );
-
 };
 
-export {App};
+
 
 export default App;

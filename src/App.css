@@ -7,7 +7,32 @@
   align-items: center;
   flex-direction: column;
 }
-
+#mainBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#box{
+  width:30%;
+  height: 20vh;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #754736;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+#userList{
+  color: white;
+  font-size: 26px;
+  margin: 5px;
+}
+#buttonPost, #buttonPost2{
+  margin: 10px;
+  background-color: #cbbf82;
+  font-size: 15px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
