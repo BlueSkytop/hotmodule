@@ -1,18 +1,11 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import axios from "axios";
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Users from "./components/user/Users";
 import Posts from './components/user/Posts';
 import UserDetail from './components/user/UserDetail';
-
-
-interface IUser {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
+import {IUser} from "./components/user/Interfaces";
 
 const App: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);

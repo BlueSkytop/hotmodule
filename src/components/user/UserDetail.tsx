@@ -1,42 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import BackButton from './BackButton';
+import {IUserDetail} from "./Interfaces";
+import {getUserDetails} from "./service";
 
-interface IUserDetail {
-    id: number;
-    firstName: string;
-    lastName: string;
-    image: string;
-    maidenName: string;
-    age: number;
-    gender: string;
-    email: string;
-    phone: string;
-    username: string;
-    password: string;
-    birthDate: string;
-    bloodGroup: string;
-    height: string;
-    weight: string;
-    eyeColor: string;
-    hair: {
-        color: string;
-        type: string;
-    };
-    domain: string;
-    ip: string;
-    address: {
-        city: string;
-        street: string;
-        number: number;
-        zipcode: string;
-        geolocation: {
-            lat: string;
-            long: string;
-        };
-    };
-}
 
 const UserDetail: React.FC = () => {
     const { userId } = useParams<{ userId: string }>();
@@ -44,16 +11,19 @@ const UserDetail: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`https://dummyjson.com/users/${userId}`)
-            .then(response => {
-                console.log(response.data);
-                setUser(response.data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching user details:', error);
-                setLoading(false);
-            });
+        if (userId) {
+            getUserDetails(userId)
+                .then(data => {
+                    setUser(data);
+                    setLoading(false);
+                })
+                .catch(() => {
+                    setLoading(false);
+                });
+        } else {
+            console.error('User ID is undefined');
+            setLoading(false);
+        }
     }, [userId]);
 
     if (loading) {
@@ -66,12 +36,11 @@ const UserDetail: React.FC = () => {
 
     return (
         <div id={'boxDetails'}>
-            <BackButton/>
+            <BackButton />
             <div>
                 <h1>User Information</h1>
                 <p>ID: {user.id}</p>
                 <p>Name: {user.firstName} {user.lastName}</p>
-                <img src={user.image} alt="User" />
                 <p>Maiden Name: {user.maidenName}</p>
                 <p>Age: {user.age}</p>
                 <p>Gender: {user.gender}</p>
@@ -80,6 +49,7 @@ const UserDetail: React.FC = () => {
                 <p>Username: {user.username}</p>
                 <p>Password: {user.password}</p>
                 <p>Birth Date: {user.birthDate}</p>
+                <img src={user.image} alt="User" />
                 <p>Blood Group: {user.bloodGroup}</p>
                 <p>Height: {user.height}</p>
                 <p>Weight: {user.weight}</p>

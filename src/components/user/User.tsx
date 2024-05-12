@@ -1,17 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {IUserProps} from "./Interfaces";
 
 
-interface IUser {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
-interface IUserProps {
-    user: IUser;
-}
 
 const User: React.FC<IUserProps> = ({ user }) => {
     return (
