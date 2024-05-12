@@ -28,7 +28,7 @@ const Posts: React.FC = () => {
     }, [userId]);
 
     return (
-        <div>
+        <div id={'postsBox'}>
             <BackButton />
             <h1>Posts by User ID: {userId}</h1>
             {posts.map(post => (

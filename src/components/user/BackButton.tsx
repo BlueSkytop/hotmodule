@@ -5,7 +5,7 @@ const BackButton: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <button onClick={() => navigate(-1)}>Back</button>
+        <button id={'buttonBack'} onClick={() => navigate(-1)}>Back</button>
     );
 };
 

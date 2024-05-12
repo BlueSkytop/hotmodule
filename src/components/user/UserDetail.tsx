@@ -7,6 +7,7 @@ interface IUserDetail {
     id: number;
     firstName: string;
     lastName: string;
+    image: string;
     maidenName: string;
     age: number;
     gender: string;
@@ -15,7 +16,6 @@ interface IUserDetail {
     username: string;
     password: string;
     birthDate: string;
-    image: string;
     bloodGroup: string;
     height: string;
     weight: string;
@@ -65,12 +65,13 @@ const UserDetail: React.FC = () => {
     }
 
     return (
-        <div>
-            <BackButton />
+        <div id={'boxDetails'}>
+            <BackButton/>
             <div>
                 <h1>User Information</h1>
                 <p>ID: {user.id}</p>
                 <p>Name: {user.firstName} {user.lastName}</p>
+                <img src={user.image} alt="User" />
                 <p>Maiden Name: {user.maidenName}</p>
                 <p>Age: {user.age}</p>
                 <p>Gender: {user.gender}</p>
@@ -79,7 +80,6 @@ const UserDetail: React.FC = () => {
                 <p>Username: {user.username}</p>
                 <p>Password: {user.password}</p>
                 <p>Birth Date: {user.birthDate}</p>
-                <img src={user.image} alt="User" />
                 <p>Blood Group: {user.bloodGroup}</p>
                 <p>Height: {user.height}</p>
                 <p>Weight: {user.weight}</p>
