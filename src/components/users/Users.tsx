@@ -1,9 +1,10 @@
 import React from 'react';
-import User from "./User";
-import {IUsersProps} from "./Interfaces";
+import User from "../user/User";
+import { IUser} from "../../models/IUserModel";
 
-
-
+interface IUsersProps {
+    users: IUser[];
+}
 
 const Users: React.FC<IUsersProps> = ({ users }) => {
     return (
@@ -14,7 +15,5 @@ const Users: React.FC<IUsersProps> = ({ users }) => {
         </div>
     );
 };
-
-
 
 export default Users;

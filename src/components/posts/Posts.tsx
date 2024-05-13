@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import BackButton from "./BackButton";
-import {IPost} from "./Interfaces";
+import BackButton from "../../services/BackButton";
+import {IPost} from "../../models/IPostModel";
 
 
-
-
+export interface PostsProps {
+    userID: number;
+}
 const Posts: React.FC = () => {
     const { userId } = useParams<{ userId: string }>();
     const [posts, setPosts] = useState<IPost[]>([]);

@@ -5,23 +5,6 @@ export interface IUser {
     email: string;
 }
 
-export interface IUsersProps {
-    users: IUser[];
-}
-
-export interface IUserProps {
-    user: IUser;
-}
-export interface PostsProps {
-    userID: number;
-}
-export interface IPost {
-    id: number;
-    title: string;
-    body: string;
-    userId: number;
-}
-
 export interface IUserDetail {
     id: number;
     firstName: string;

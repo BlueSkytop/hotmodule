@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {IUserProps} from "./Interfaces";
+import { IUser} from "../../models/IUserModel";
+import {Link} from "react-router-dom";
 
-
+interface IUserProps {
+    user: IUser;
+}
 
 const User: React.FC<IUserProps> = ({ user }) => {
     return (
@@ -17,7 +19,5 @@ const User: React.FC<IUserProps> = ({ user }) => {
         </div>
     );
 };
-
-
 
 export default User;
