@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getUserDetails} from "../../services/service";
-import BackButton from "../../services/BackButton";
+import BackButton from "../../models/BackButton";
 import { IUserDetail} from "../../models/IUserModel";
 
 
@@ -12,10 +12,10 @@ const UserDetail: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (userId) { // Ensure userId is defined before making the API call
+        if (userId) {
             getUserDetails(userId)
                 .then(data => {
-                    setUser(data); // Assuming the data is directly usable
+                    setUser(data);
                     setLoading(false);
                 })
                 .catch(() => {

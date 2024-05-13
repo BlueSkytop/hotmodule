@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Users from "./components/users/Users";
 import Posts from "./components/posts/Posts";
 import UserDetail from "./components/users/UserDetail";
+import {IUser} from "./models/IUserModel";
 
-interface IUser {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
 
 const App: React.FC = () => {
     const [users, setUsers] = useState<IUser[]>([]);
@@ -33,5 +28,6 @@ const App: React.FC = () => {
         </Router>
     );
 };
+
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import BackButton from "../../services/BackButton";
+import BackButton from "../../models/BackButton";
 import {IPost} from "../../models/IPostModel";
 
 
